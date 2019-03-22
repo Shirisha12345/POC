@@ -1,0 +1,57 @@
+package com.cox.dit.dbconfig;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class DbConfig {
+	
+	@Bean(name = "plsqlDb")
+	  @ConfigurationProperties(prefix = "spring.ds.post")
+	  public DataSource  plsqlDataSource() {
+	
+	  return DataSourceBuilder.create().build(); 
+	  }
+
+	  @Bean(name = "postgresJdbcTemplate")
+	  @Qualifier("plsqlJdbcTemplate")
+	  public JdbcTemplate psqljdbcTemplate(@Qualifier("plsqlDb") DataSource dspost)
+	   { 
+		  return new JdbcTemplate(dspost); 
+		  }
+	  
+	  
+	  @Bean(name = "MongoDb")
+	  @ConfigurationProperties(prefix = "spring.ds.mongo")
+	  public DataSource  mongoDataSource()
+	  {
+	  return DataSourceBuilder.create().build(); 
+	  }
+	  
+	  @Bean(name = "MongoDb") 
+	  @Qualifier("mongojdbctemplate")
+	  public JdbcTemplate  mongojdbcTemplate(@Qualifier("MongoDb") DataSource dsmongo)
+	  {
+		  return new JdbcTemplate(dsmongo); 
+		  }
+	 
+	
+	@Bean(name = "h2")
+	@ConfigurationProperties(prefix = "spring.ds.h2")
+	public DataSource h2DataSource() {
+
+      return DataSourceBuilder.create().build();
+  }
+	
+	@Bean(name = "h2JdbcTemplate")
+	@Qualifier("h2jdbctemplate")
+	public JdbcTemplate h2jdbcTemplate(@Qualifier("h2") DataSource dsh2) {
+		return new JdbcTemplate(dsh2);
+	}
+	
+
+}

@@ -1,0 +1,30 @@
+
+
+# #H2
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2
+
+ #Datasource
+spring.ds.url=jdbc:h2:file:~/test;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+spring.ds.username=sa
+spring.ds.password=
+spring.ds.driver-class-name=org.h2.Driver
+
+#MongoDB
+#spring.ds.mongo.url=jdbc:mongoserver://localhost:27017/test
+#spring.ds.mongo.username =root
+#spring.ds.mongo.password =
+#spring.ds_mongo.driverClassName=mongodb.jdbc.MongoDriver
+server.port=8089
+
+
+spring.main.allow-bean-definition-overriding=true
+
+#spring.datasource.platform=postgres
+#spring.datasource.url=jdbc:postgresql://localhost:5432/CONNECTION_DETAILS
+#spring.datasource.username=postgres
+#spring.datasource.password=hari5621
+#spring.jpa.hibernate.ddl-auto=create
+#spring.jpa.generate-ddl=true
+#spring.datasource.driver-class-name=org.postgresql.Driver

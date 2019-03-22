@@ -1,0 +1,75 @@
+package com.cox.dit.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Service;
+
+import com.cox.dit.entity.Ditentity;
+import com.cox.dit.model.DitDomain;
+import com.cox.dit.repository.DitRepository;
+
+@Service
+public class DitServiceImpl implements DitService {
+
+	@Autowired
+	private DitRepository repo;
+	@Autowired
+	private JdbcTemplate h2jdbcTemplate;
+
+	@Autowired
+	private JdbcTemplate mongojdbcTemplate;
+
+	@Override
+	public DitDomain save(DitDomain input) {
+		DitDomain result = repo.save(input);
+		return result;
+	}
+
+//	@Override
+//	public List<Ditentity> getalldetails() {
+//		List<Ditentity> getAllvalues = (List<Ditentity>) repo.findAll();
+//		return getAllvalues;
+//	}
+//
+//	@Override
+//	public DitDomain getdatabasedetails(int id) {
+//		DitDomain model = new DitDomain();
+//		String sql;
+//		Ditentity table = null;
+//		int result;
+//		Optional<Ditentity> finddatabase = repo.findById(id);
+//		if (finddatabase.isPresent())
+//			table = finddatabase.get();
+//		if (table.getId() == 1) {
+//
+//			sql = "SELECT PORT FROM TEST_TABLE WHERE ID=1;";
+//			result = Integer.parseInt(h2jdbcTemplate.queryForObject(sql, String.class));
+//			model.setResult(result);
+//			model.setId(table.getId());
+//			model.setDbCategory(table.getDbCategory());
+//			model.setDbType(table.getDbType());
+//			model.setUsername(table.getUsername());
+//			model.setPassword(table.getPassword());
+//			model.setPort(table.getPort());
+//			model.setHost(table.getHost());
+//		}
+//		if(table.getId()==2)
+//		{
+//		 sql="test.movie.length().";
+//		 result=Integer.parseInt(mongojdbcTemplate.queryForObject(sql, String.class));
+//		 model.setResult(result);
+//         model.setId(table.getId());
+//         model.setDbCategory(table.getDbCategory());
+//         model.setDbType(table.getDbType());
+//         model.setUsername(table.getUsername());
+//         model.setPort(table.getPort());
+//         model.setPassword(table.getPassword());
+//         model.setHost(table.getHost());
+//		}
+//
+//		return model;
+//	}
+}

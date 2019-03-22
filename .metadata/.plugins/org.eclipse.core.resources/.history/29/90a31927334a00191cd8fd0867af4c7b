@@ -1,0 +1,108 @@
+package com.cox.dit.entity;
+
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+//import org.springframework.data.mongodb.core.mapping.Document;
+
+@Entity
+//@Document
+@Table(name="test")
+public class Ditentity {
+
+	
+	@Id
+	private int id;
+	
+
+	private String dbType;
+	
+	
+	private String dbCategory;
+	
+
+	private String host;
+
+
+	private String port;
+
+
+	private String username;
+
+	
+	private String password;
+
+	public Ditentity() {
+		super();
+	}
+
+	public Ditentity(int id, String dbType, String dbCategory, String host, String port, String username, String password) {
+		super();
+		this.id = id;
+		this.dbType = dbType;
+		this.dbCategory = dbCategory;
+		this.host = host;
+		this.port = port;
+		this.username = username;
+		this.password = password;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getDbType() {
+		return dbType;
+	}
+
+	public void setDbType(String dbType) {
+		this.dbType = dbType;
+	}
+
+	public String getDbCategory() {
+		return dbCategory;
+	}
+
+	public void setDbCategory(String dbCategory) {
+		this.dbCategory = dbCategory;
+	}
+
+	public String getHost() {
+		return host;
+	}
+
+	public void setHost(String host) {
+		this.host = host;
+	}
+
+	public String getPort() {
+		return port;
+	}
+
+	public void setPort(String port) {
+		this.port = port;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+}

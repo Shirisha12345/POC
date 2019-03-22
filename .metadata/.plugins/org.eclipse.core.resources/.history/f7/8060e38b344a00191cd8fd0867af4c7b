@@ -1,0 +1,18 @@
+package com.cox.dit.Service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.cox.dit.entity.Ditentity;
+import com.cox.dit.model.DitDomain;
+
+@Service
+public interface DitService {
+
+	public Ditentity save(Ditentity input);
+	public DitDomain getdatabasedetails(int id);
+	public List<Ditentity> getalldetails();
+	
+}

@@ -1,0 +1,14 @@
+package com.cox.dit.repository;
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+import com.cox.dit.entity.Ditentity;
+
+
+@Repository
+public interface DitRepository extends CrudRepository<Ditentity, Integer> {
+	
+	
+
+}

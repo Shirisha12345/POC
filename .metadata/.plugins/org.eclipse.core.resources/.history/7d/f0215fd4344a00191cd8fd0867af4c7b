@@ -1,0 +1,57 @@
+package com.cox.dit.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.cox.dit.Service.DitService;
+import com.cox.dit.entity.Ditentity;
+import com.cox.dit.model.DitDomain;
+
+
+@RestController
+@RequestMapping(value="api/v1")
+public class DitController {
+	
+	@Autowired
+	private DitService ditservice;
+	
+	
+	@PostMapping(value="/save")
+	public Ditentity savedetails(@RequestBody Ditentity input)
+	{
+		Ditentity response=ditservice.save(input);
+		
+	    return response;
+	}
+	
+
+	@GetMapping(value = "/get")
+	public ResponseEntity<List<Ditentity>> getAlldatabases() {
+		List<Ditentity> list=ditservice.getalldetails();
+		
+		return new ResponseEntity<List<Ditentity>>(list,HttpStatus.OK);
+
+	}
+	
+	
+	@GetMapping(value="/getdatabasedetails/{id}")
+	public DitDomain savedetails1(@PathVariable int id)
+	{
+		DitDomain response=ditservice.getdatabasedetails(id);
+		
+	    return response;
+	}
+	
+	
+
+}
